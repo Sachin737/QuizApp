@@ -1,5 +1,5 @@
 :root {
-    background-image: url(/images/bgw.png);
+    background-color: #031927;
     font-size: 62.5%;
 }
 
@@ -8,7 +8,7 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    color: #8b8b8b;
+    color: #F5F5F5;
 }
 
 h1,
@@ -20,7 +20,7 @@ h4 {
 
 h1 {
     font-size: 5.4rem;
-    color: #cfedff;
+    color: #C8E0F4;
     margin-bottom: 5rem;
 }
 
@@ -86,17 +86,17 @@ h3 {
     padding: 1rem 0;
     width: 20rem;
     text-align: center;
-    border: 0.1rem solid #cfedff;
+    border: 0.1rem solid #F5F5F5;
     margin-bottom: 1rem;
     text-decoration: none;
-    color: #56a5eb;
-    background-color: white;
+    color: #031927;
+    background-color: #F5F5F5;
     border-radius: 2rem;
 }
 
 .btn:hover {
     cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(179, 231, 255, 0.5);
     transform: translateY(-0.1rem);
     transition: transform 150ms;
 }
