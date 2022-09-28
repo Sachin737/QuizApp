@@ -47,6 +47,7 @@ startGame = () => {
 };
 
 getNewQuestion = () => {
+    // setup the question
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         return window.location.assign('/end.html');
     }
@@ -71,7 +72,16 @@ choices.forEach((choice) => {
         acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
-        getNewQuestion();
+
+        const ResultofSelection = (currentQuestion.answer == selectedAnswer ? "correct" : "incorrect");
+
+        selectedChoice.parentElement.classList.add(ResultofSelection);
+        
+        // to wait for 1s before removing class of colors
+        setTimeout( ()=>{
+            selectedChoice.parentElement.classList.remove(ResultofSelection);
+            getNewQuestion();
+        },1000)
     });
 });
 
