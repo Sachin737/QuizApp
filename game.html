@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,35 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="game.css">
 </head>
+
 <body>
     <div class="container">
         <div id="game" class="justify-center flex-column">
+            <!-- for question number and score -->
+            <div id="head">
+
+                <div id="head-item">
+                    <p id="progressText" class="head-pref">
+
+                    </p>
+                    <div id="progressBar">
+                        <div id="progressBarfull"></div>
+                    </div>
+                </div>
+
+                <div class="head-item">
+                    <p class="head-pref">
+                        Score
+                    </p>
+                    <div class="head-text" id="Score">
+                        
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <!-- questions starts here -->
             <h2 id="question">What is your answer?</h2>
             <div class="choice-container">
                 <p class="choice-tag">A</p>
@@ -36,4 +63,5 @@
 
     <script src="game.js"></script>
 </body>
+
 </html>

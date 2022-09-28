@@ -1,5 +1,9 @@
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('choice-text'));
+const progressText = document.getElementById('progressText');
+const scoreText = document.getElementById('Score');
+const progressBarfull = document.getElementById('progressBarfull');
+
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -43,6 +47,8 @@ startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuesions = [...questions];
+    scoreText.innerText = score;
+    progressBarfull.style.width = 0;
     getNewQuestion();
 };
 
@@ -51,7 +57,12 @@ getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         return window.location.assign('/end.html');
     }
+
     questionCounter++;
+    progressText.innerText = `Question: ${questionCounter}/${MAX_QUESTIONS}`;
+    console.log((questionCounter/MAX_QUESTIONS)*100);
+    progressBarfull.style.width = `${(questionCounter/MAX_QUESTIONS)*100}%`;
+
     const questionIndex = Math.floor(Math.random() * availableQuesions.length);
     currentQuestion = availableQuesions[questionIndex];
     question.innerText = currentQuestion.question;
@@ -77,6 +88,12 @@ choices.forEach((choice) => {
 
         selectedChoice.parentElement.classList.add(ResultofSelection);
         
+        if(ResultofSelection==="correct")
+        {
+            score+=CORRECT_BONUS;
+        }
+        scoreText.innerText = score;
+
         // to wait for 1s before removing class of colors
         setTimeout( ()=>{
             selectedChoice.parentElement.classList.remove(ResultofSelection);

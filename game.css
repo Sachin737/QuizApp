@@ -32,4 +32,38 @@
 
 .incorrect {
     background-color: rgb(203, 23, 23);
+}   
+
+
+/* For HEAD */
+
+#head {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5rem;
+}
+
+.head-pref {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: whitesmoke;
+}
+
+.head-text {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 4rem;
+}
+
+#progressBar {
+    margin-top: 2rem;
+    border: 0.3rem solid whitesmoke;
+    height: 4rem;
+    width: 20rem;
+}
+
+#progressBarfull {
+    background-color: #2e6884;
+    height: 3.4rem;
 }
