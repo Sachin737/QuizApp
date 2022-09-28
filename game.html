@@ -14,11 +14,12 @@
     <div class="container">
         <!-- form -->
         <div id="category-container" class="justify-center flex-column">
-            <form>
+            <form action="">
                 <h2>Generate random questions.</h2>
-                
-                <input type="number" id="NumberofQuestions" class="NumberofQuestions" min="1" max="50" placeholder="#Questions">
-                
+
+                <input type="number" id="NumberofQuestions" class="NumberofQuestions"
+                    placeholder="#Questions">
+
                 <br>
 
                 <select name="categories" id="categories">
@@ -42,8 +43,29 @@
                 </select>
                 <br>
 
-                <button type="submit" class="btn" id="pick-category-btn" onclick="pickCategory(event)">Start
-                    Quiz</button>
+                <input type="submit" class="btn" id="pick-category-btn" value="Play Game">
+                
+                <script>
+                    // to validae input before onClick
+                    const specifiedElement = document.getElementById("pick-category-btn");
+
+                    document.addEventListener("click", (event) => {
+                        const isClickInside = specifiedElement.contains(event.target);
+
+                        if (isClickInside) {
+                            const countOfQuestions = document.getElementById("NumberofQuestions").value;
+                            console.log(countOfQuestions);
+                            if(!countOfQuestions || countOfQuestions<=0 || countOfQuestions>20)
+                            {
+                                alert("Number of questions must be in range of 1 to 20")
+                                return;
+                            }else
+                            {
+                                return pickCategory(event);
+                            }
+                        }
+                    });
+                </script>
 
             </form>
         </div>

@@ -25,6 +25,7 @@ const CORRECT_BONUS = 10;
 let MAX_QUESTIONS = 5;
 // 
 
+
 pickCategory = (e) => {
     e.preventDefault();
 
@@ -119,7 +120,7 @@ startGame = () => {
     scoreText.innerText = score;
     progressBarfull.style.width = 0;
 
-    
+
     getNewQuestion();
     game.classList.remove("hidden");
     loader.classList.add("hidden");
