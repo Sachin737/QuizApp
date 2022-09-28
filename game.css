@@ -78,3 +78,24 @@
     background-color: #2e6884;
     height: 3.4rem;
 }
+
+
+/* For loader */
+
+#loader {
+    border: 1.2rem whitesmoke solid;
+    border-radius: 50%;
+    border-top: 1.2rem solid #2e6884;
+    width: 10rem;
+    height: 10rem;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
