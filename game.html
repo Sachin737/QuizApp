@@ -12,11 +12,46 @@
 
 <body>
     <div class="container">
+        <!-- form -->
+        <div id="category-container" class="justify-center flex-column">
+            <form>
+                <h2>Generate random questions.</h2>
+                
+                <input type="number" id="NumberofQuestions" class="NumberofQuestions" min="1" max="50" placeholder="#Questions">
+                
+                <br>
+
+                <select name="categories" id="categories">
+                    <option value="none">Category</option>
+                    <option value="generalKnowledge">General Knowledge</option>
+                    <option value="anime">Anime & Manga</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="film">Movies</option>
+                    <option value="tv">TV Shows</option>
+                    <option value="myth">Mythology</option>
+                    <option value="vehicles">Vehicles</option>
+                </select>
+
+                <br>
+
+                <select name="levels" id="levels">
+                    <option value="none">Difficulty level</option>
+                    <option value="easy">Easy</option>
+                    <option value="med">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <br>
+
+                <button type="submit" class="btn" id="pick-category-btn" onclick="pickCategory(event)">Start
+                    Quiz</button>
+
+            </form>
+        </div>
+
         <!-- loader -->
-        <div id="loader"></div>
-        
+        <div id="loader" class="hidden"></div>
+
         <div id="game" class="justify-center flex-column hidden">
-            
 
             <!-- Progress and Score -->
             <div id="head">

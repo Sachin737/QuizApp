@@ -30,7 +30,7 @@ h1>span {
 }
 
 h2 {
-    font-size: 4.2rem;
+    font-size: 2.6rem;
     margin-bottom: 4rem;
     font-weight: 700;
 }
@@ -127,7 +127,7 @@ option{
     background-color: whitesmoke;
 }
 
-input {
+input,select {
     font-size: 1.8rem;
     padding: 1rem 0;
     width: 20rem;

@@ -3,56 +3,114 @@ const choices = Array.from(document.getElementsByClassName('choice-text'));
 const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('Score');
 const progressBarfull = document.getElementById('progressBarfull');
-const loader= document.getElementById('loader');
+const loader = document.getElementById('loader');
 const game = document.getElementById('game');
 
+const categories = document.getElementById('categories');
+const levels = document.getElementById('levels')
+const categoryContainer = document.getElementById("category-container");
+console.log(NumberofQuestions);
 
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuesions = [];
+let difficulty = 'easy';
 
 let questions = [];
 
-var url = "https://opentdb.com/api.php?amount=10";
-
-fetch(
-    url
-)
-    .then((res) => {
-        return res.json();
-    })
-    .then((loadedQuestions) => {
-        // console.log(loadedQuestions.results);
-        questions = loadedQuestions.results.map((loadedQuestion) => {
-            const formattedQuestion = {
-                question: loadedQuestion.question,
-            };
-
-            const answerChoices = [...loadedQuestion.incorrect_answers];
-            formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
-            answerChoices.splice(
-                formattedQuestion.answer - 1,
-                0,
-                loadedQuestion.correct_answer
-            );
-
-            answerChoices.forEach((choice, index) => {
-                formattedQuestion['choice' + (index + 1)] = choice;
-            });
-
-            return formattedQuestion;   
-        });
-        startGame();
-    })
-    .catch((err) => {
-        console.error(err);
-    });
-
 //CONSTANTS
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 5;
+let MAX_QUESTIONS = 5;
+// 
+
+pickCategory = (e) => {
+    e.preventDefault();
+
+    switch (levels.value) {
+        case 'med':
+            difficulty = 'medium';
+            break;
+        case 'hard':
+            difficulty = 'hard';
+            break;
+
+        default:
+            difficulty = 'easy'
+            break;
+    }
+
+    switch (categories.value) {
+        case 'gk':
+            category = 10;
+            break;
+
+        case 'anime':
+            category = 31;
+            break;
+
+        case 'cs':
+            category = 18;
+            break;
+
+        case 'film':
+            category = 11;
+            break;
+
+        case 'tv':
+            category = 14;
+            break;
+
+        case 'vehicles':
+            category = 28;
+            break;
+
+        case 'myth':
+            category = 20;
+            break;
+
+        default:
+            category = 10;
+            break;
+    };
+
+    categoryContainer.classList.add('hidden')
+    loader.classList.remove('hidden')
+
+    MAX_QUESTIONS = document.getElementById('NumberofQuestions').value;
+
+    fetch(`https://opentdb.com/api.php?amount=${MAX_QUESTIONS}&category=${category}&difficulty=${difficulty}&type=multiple`)
+        .then((res) => {
+            return res.json();
+        })
+        .then((loadedQuestions) => {
+            // console.log(loadedQuestions.results);
+            questions = loadedQuestions.results.map((loadedQuestion) => {
+                const formattedQuestion = {
+                    question: loadedQuestion.question,
+                };
+
+                const answerChoices = [...loadedQuestion.incorrect_answers];
+                formattedQuestion.answer = Math.floor(Math.random() * 4) + 1;
+                answerChoices.splice(
+                    formattedQuestion.answer - 1,
+                    0,
+                    loadedQuestion.correct_answer
+                );
+
+                answerChoices.forEach((choice, index) => {
+                    formattedQuestion['choice' + (index + 1)] = choice;
+                });
+
+                return formattedQuestion;
+            });
+            startGame();
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+}
 
 startGame = () => {
     questionCounter = 0;
@@ -61,8 +119,9 @@ startGame = () => {
     scoreText.innerText = score;
     progressBarfull.style.width = 0;
 
-    game.classList.remove("hidden");
+    
     getNewQuestion();
+    game.classList.remove("hidden");
     loader.classList.add("hidden");
 };
 
