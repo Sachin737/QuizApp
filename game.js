@@ -55,6 +55,7 @@ startGame = () => {
 getNewQuestion = () => {
     // setup the question
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+        localStorage.setItem("RecentScore",score);
         return window.location.assign('/end.html');
     }
 
@@ -98,7 +99,7 @@ choices.forEach((choice) => {
         setTimeout( ()=>{
             selectedChoice.parentElement.classList.remove(ResultofSelection);
             getNewQuestion();
-        },1000)
+        },700)
     });
 });
 

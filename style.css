@@ -87,23 +87,45 @@ h3 {
     padding: 1rem 0;
     width: 20rem;
     text-align: center;
-    border: 0.1rem solid #F5F5F5;
+    border: 0.1rem solid whitesmoke;
     margin-bottom: 1rem;
     text-decoration: none;
     color: #031927;
-    background-color: #F5F5F5;
+    background-color: whitesmoke;
     border-radius: 2rem;
 }
 
 .btn:hover {
     cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgba(179, 231, 255, 0.5);
+    box-shadow: 0 0.4rem 1.4rem 0 #2e6884;
     transform: translateY(-0.1rem);
-    transition: transform 150ms;
+    transition: transform 0.7s;
 }
 
 .btn[disabled]:hover {
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
+}
+
+
+/* Forms */
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+input {
+    color: #031927;
+    width: 20rem;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    background-color: whitesmoke;
+}
+
+input::placeholder {
+    color: #aaa;
 }
